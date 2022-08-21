@@ -1,34 +1,14 @@
-import logo from './images/logo.svg';
-import avatar from './images/avatar.jpg';
-import './index.css';
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
+import '../index.css';
 
 function App() {
   return (
       <body className="page">
-      <header className="header">
-        <img src={logo} alt="Место" className="header__logo"/>
-      </header>
-      <main>
-        <section className="profile">
-          <img src={avatar} alt="Аватар" className="profile__avatar profile__avatar-input"/>
-            <button type="button" className="profile__avatar profile__edit-avatar"></button>
-            <div className="profile__info">
-              <h1 className="profile__name"></h1>
-              <button className="profile__edit-button" type="button" aria-label="редактировать"></button>
-              <p className="profile__job"></p>
-            </div>
-            <button className="profile__add-button" type="button" aria-label="Добавить"></button>
-        </section>
-
-        <section className="cards">
-          <ul className="cards__list">
-          </ul>
-        </section>
-
-      </main>
-      <footer className="footer">
-        <p className="footer__text">&copy; 2022 Mesto Russia | Natalia Ustinova</p>
-      </footer>
+      <Header />
+      <Main />
+      <Footer />
       <div className="popup popup_profile-info">
         <div className="popup__container">
           <h3 className="popup__heading">Редактировать профиль</h3>
@@ -113,7 +93,7 @@ function App() {
       <div className="popup popup_show-pic">
         <div className="popup__fullscreen">
           <button className="popup__close popup__close-show" type="button" aria-label="Закрыть"></button>
-          <img className="popup__full-image" src="#" alt="Фото"/>
+          <img className="popup__full-image" src="src/components/App#" alt="Фото"/>
           <p className="popup__description"></p>
         </div>
       </div>
@@ -121,7 +101,7 @@ function App() {
       <template className="card card__template">
         <li className="card card__element">
           <button type="button" className="card__delete"></button>
-          <img className="card__image" src="#" alt="Фото"/>
+          <img className="card__image" src="src/components/App#" alt="Фото"/>
           <div className="card__info">
             <h3 className="card__title"></h3>
             <div className="card__like-wrapper">
