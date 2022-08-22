@@ -11,7 +11,15 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-
+  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
+  
+  const [selectedCard, setSelectedCard] = useState();
+  
+  function handleCardClick(card) {
+    setSelectedCard(card);
+    setIsImagePopupOpen(!isImagePopupOpen);
+  }
+  
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
   }
@@ -26,6 +34,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
+    setIsImagePopupOpen(false);
   }
   
   return (
@@ -117,19 +126,7 @@ function App() {
       {/*TODO Попап открытия картинки*/}
       <ImagePopup />
 
-      <template className="card card__template">
-        <li className="card card__element">
-          <button type="button" className="card__delete"></button>
-          <img className="card__image" src="src/components/App#" alt="Фото"/>
-          <div className="card__info">
-            <h3 className="card__title"></h3>
-            <div className="card__like-wrapper">
-              <button className="card__like" type="button" aria-label="Нравится"></button>
-              <p className="card__like-counter"></p>
-            </div>
-          </div>
-        </li>
-      </template>
+      
       </body>
   );
 }

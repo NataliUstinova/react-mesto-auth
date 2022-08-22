@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import avatar from "../images/avatar.jpg";
 import {api} from "../utils/Api"
+import Card from "./Card"
 
 export default function Main({onEditProfile, 
                                onAddPlace, 
@@ -9,6 +10,8 @@ export default function Main({onEditProfile,
   const [userName, setUserName] = useState('Natasha');
   const [userDescription, setUserDescription] = useState('MUA');
   const [userAvatar, setUserAvatar] = useState(avatar);
+  
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
       api.getUserInfoServer()
@@ -18,7 +21,13 @@ export default function Main({onEditProfile,
           setUserAvatar(res.avatar)
         })
         .catch(err => console.log(err));
-    }, [])
+    }, []);
+
+  useEffect(() => {
+    api.getInitialCards()
+      .then(res => setCards(res))
+        .catch(err => console.log(err));
+  }, []);
   
     return (
         <main>
@@ -33,10 +42,7 @@ export default function Main({onEditProfile,
             <button onClick={onAddPlace} className="profile__add-button" type="button" aria-label="Добавить"></button>
         </section>
 
-        <section className="cards">
-            <ul className="cards__list">
-            </ul>
-        </section>
+        <Card cards={cards}/>
     </main>
     )
 }
