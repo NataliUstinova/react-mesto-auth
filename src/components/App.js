@@ -122,7 +122,7 @@ function App() {
         button="Да"
         onClose={closeAllPopups} />  
       
-      {/*TODO Попап открытия картинки*/}
+      {/*Попап открытия картинки*/}
       <ImagePopup
                   onClose={closeAllPopups}
                   card={selectedCard}
