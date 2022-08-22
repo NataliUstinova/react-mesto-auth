@@ -11,13 +11,11 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
   
-  const [selectedCard, setSelectedCard] = useState();
+  const [selectedCard, setSelectedCard] = useState({name: "", link: ""});
   
-  function handleCardClick(card) {
-    setSelectedCard(card);
-    setIsImagePopupOpen(!isImagePopupOpen);
+  function handleCardClick(cardData) {
+    setSelectedCard(cardData);
   }
   
   function handleEditProfileClick() {
@@ -34,16 +32,17 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    setIsImagePopupOpen(false);
+    setSelectedCard({name: "", link: ""})
   }
   
   return (
-      <body className="page">
+      <div className="page">
       <Header />
       <Main 
       onEditProfile={handleEditProfileClick}
       onEditAvatar={handleEditAvatarClick}
       onAddPlace={handleAddPlaceClick}
+      onCardClick={handleCardClick}
       />
       <Footer />
       
@@ -124,10 +123,11 @@ function App() {
         onClose={closeAllPopups} />  
       
       {/*TODO Попап открытия картинки*/}
-      <ImagePopup />
-
-      
-      </body>
+      <ImagePopup
+                  onClose={closeAllPopups}
+                  card={selectedCard}
+                  />
+      </div>
   );
 }
 
