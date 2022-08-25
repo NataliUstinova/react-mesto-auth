@@ -7,6 +7,7 @@ import ImagePopup from "./ImagePopup";
 import PopupWithForm from "./PopupWithForm";
 import {api} from "./../utils/Api"
 import CurrentUserContext from "./../contexts/CurrentUserContext"
+import EditProfilePopup from "./EditProfilePopup";
 
 
 function App() {
@@ -36,12 +37,19 @@ function App() {
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
   }
-  
+
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setSelectedCard({name: "", link: ""})
+  }
+
+  function handleUpdateUser(input) {
+    api.editProfile(input).then(input => {
+      setCurrentUser(input);
+      closeAllPopups();
+    }).catch(err => console.log(err));
   }
   
   return (
@@ -57,31 +65,7 @@ function App() {
       <Footer />
       
       {/*Попап редактирования профиля*/}
-      <PopupWithForm 
-        isOpen={isEditProfilePopupOpen}
-        name="popup_profile-info" 
-        title="Редактировать профиль"
-        button="Сохранить"
-        onClose={closeAllPopups}>
-        <input id="profile-name"
-                 required
-                 minLength="2"
-                 maxLength="40"
-                 className="popup__input popup__input_value_name popup__text"
-                 type="text"
-                 name="name"
-                 placeholder="Имя"/>
-          <span className="profile-name-error"></span>
-          <input id="profile-job"
-                 required
-                 minLength="2"
-                 maxLength="200"
-                 className="popup__input popup__input_value_job popup__text"
-                 type="text"
-                 name="job"
-                 placeholder="Деятельность"/>
-          <span className="profile-job-error"></span>
-      </PopupWithForm>
+      <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/>
       
       {/*Попап добавления карточки*/}
       <PopupWithForm
