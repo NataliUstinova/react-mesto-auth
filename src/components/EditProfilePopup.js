@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, {useContext, useEffect, useState} from 'react';
+=======
+import React, {useContext, useState} from 'react';
+>>>>>>> origin/main
 import PopupWithForm from "./PopupWithForm";
 import CurrentUserContext from "./../contexts/CurrentUserContext"
 
@@ -8,11 +12,14 @@ export default function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
   const [name, setName] = useState(currentUser.name);
   const [about, setAbout] = useState(currentUser.about);
   
+<<<<<<< HEAD
   useEffect(() => {
     setName(currentUser.name);
     setAbout(currentUser.about)
   }, [currentUser])
   
+=======
+>>>>>>> origin/main
   function handleNameChange(e) {
     setName(e.target.value);
   }
@@ -42,7 +49,10 @@ export default function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
              type="text"
              name="name"
              placeholder="Имя"
+<<<<<<< HEAD
              defaultValue={currentUser.name}
+=======
+>>>>>>> origin/main
              onChange={handleNameChange}/>
       <span className="profile-name-error"></span>
       <input id="profile-job"
@@ -52,7 +62,10 @@ export default function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
              className="popup__input popup__input_value_job popup__text"
              type="text"
              name="job"
+<<<<<<< HEAD
              defaultValue={currentUser.about}
+=======
+>>>>>>> origin/main
              placeholder="Деятельность"
              onChange={handleAboutChange}/>
       <span className="profile-job-error"></span>
