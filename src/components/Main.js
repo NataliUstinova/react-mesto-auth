@@ -19,7 +19,14 @@ export default function Main({onEditAvatar, onAddPlace, onEditProfile, onCardCli
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
       const newCards = cards.map((c) => c._id === card._id ? newCard : c);
       setCards(newCards);
-    });
+    }).catch((err) => console.log(err));
+  }
+
+  function handleCardDelete(deletedCard) {
+    api.deleteCard(deletedCard._id).then(() => {
+      const updatedCards = cards.filter((card) => card._id !== deletedCard._id);
+      setCards(updatedCards);
+    }).catch((err) => console.log(err));
   }
   
     return (
@@ -37,7 +44,7 @@ export default function Main({onEditAvatar, onAddPlace, onEditProfile, onCardCli
           
           <section className="cards">
             <ul className="cards__list">
-              {cards.map((card) => (<Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={handleCardLike}/>))}
+              {cards.map((card) => (<Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={handleCardLike} onCardDelete={handleCardDelete}/>))}
             </ul>
           </section>
     </main>

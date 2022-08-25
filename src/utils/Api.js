@@ -72,22 +72,6 @@ class Api {
     })
       .then(this._checkServerResponse)
   }
-  
-  // addLike(id) {
-  //   return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-  //     method: 'PUT',
-  //     headers: this._headers
-  //   })
-  //     .then(this._checkServerResponse)
-  // }
-  //
-  // deleteLike(id) {
-  //   return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-  //     method: 'DELETE',
-  //     headers: this._headers
-  //   })
-  //     .then(this._checkServerResponse)
-  // }
 }
 
 export const api = new Api({
