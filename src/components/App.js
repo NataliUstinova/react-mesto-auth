@@ -8,6 +8,7 @@ import PopupWithForm from "./PopupWithForm";
 import {api} from "./../utils/Api"
 import CurrentUserContext from "./../contexts/CurrentUserContext"
 import EditProfilePopup from "./EditProfilePopup";
+import EditAvatarPopup from "./EditAvatarPopup";
 
 
 function App() {
@@ -46,10 +47,19 @@ function App() {
   }
 
   function handleUpdateUser(input) {
-    api.editProfile(input).then(input => {
+    api.editProfile(input)
+      .then(input => {
       setCurrentUser(input);
       closeAllPopups();
     }).catch(err => console.log(err));
+  }
+
+  function handleUpdateAvatar(input) {
+    api.changeUserAvatar(input)
+      .then(input => {
+        setCurrentUser(input);
+        closeAllPopups();
+      }).catch(err => console.log(err));
   }
   
   return (
@@ -66,7 +76,8 @@ function App() {
       
       {/*Попап редактирования профиля*/}
       <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/>
-      
+      {/*Попап изменения аватара*/}
+      <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateAvatar}/>
       {/*Попап добавления карточки*/}
       <PopupWithForm
         isOpen={isAddPlacePopupOpen}
@@ -91,22 +102,7 @@ function App() {
                      placeholder="Ссылка на картинку"/>
           <span className="pic-link-error"></span>
       </PopupWithForm>
-      
-      {/*Попап изменения аватара*/}
-      <PopupWithForm
-        isOpen={isEditAvatarPopupOpen}
-        name="popup_edit-avatar"
-        title="Обновить аватар"
-        button="Сохранить"
-        onClose={closeAllPopups}>
-            <input id="avatarLink"
-                   required
-                   className="popup__input popup__input_value_avatar-link"
-                   type="url"
-                   name="avatarLink"
-                   placeholder="Ссылка на аватар"/>
-              <span className="avatarLink-error"></span>
-      </PopupWithForm>
+        
 
       {/*TODO Попап удаления карточки*/}
       <PopupWithForm
