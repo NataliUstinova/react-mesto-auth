@@ -15,3 +15,11 @@
 .card__delete:hover {
   opacity: 0.5;
 }
+
+.card__delete-button_visible {
+  visibility: visible;
+}
+
+.card__delete-button_hidden {
+  visibility: hidden;
+}
