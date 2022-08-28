@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PopupWithForm from "./PopupWithForm";
+import useValidation from "../hooks/useValidation";
 
 const DeleteCardPopup = ({isOpen, isLoading, card, onCardDelete, onClose, onClick}) => {
+  const {isDisabled, resetForm} = useValidation({})
+
+  useEffect(() => {
+    resetForm()
+  }, [isOpen, onClose, resetForm]);
   
   function handleCardDelete(e) {
     e.preventDefault();
@@ -14,6 +20,7 @@ const DeleteCardPopup = ({isOpen, isLoading, card, onCardDelete, onClose, onClic
       onClick={onClick}
       isOpen={isOpen}
       isLoading={isLoading}
+      isDisabled={isDisabled}
       onSubmit={handleCardDelete}
       name="popup_delete-pic"
       title="Вы уверены?"
