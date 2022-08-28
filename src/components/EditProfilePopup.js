@@ -10,14 +10,12 @@ export default function EditProfilePopup({isOpen, onClose, onUpdateUser, isLoadi
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
-    values.name = currentUser.name;
-    values.about = currentUser.about;
     resetForm()
-  }, [isOpen, onClose, resetForm]);
+  }, [onClose, resetForm]);
   
   function handleSubmit(e) {
     e.preventDefault();
-    onUpdateUser({name: values.name, about: values.about});
+    onUpdateUser({name: values.name || currentUser.name, about: values.about || currentUser.about});
   }
   
   return (
