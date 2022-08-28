@@ -4,7 +4,6 @@ import Main from './Main';
 import Footer from './Footer';
 import '../index.css';
 import ImagePopup from "./ImagePopup";
-import PopupWithForm from "./PopupWithForm";
 import {api} from "../utils/Api"
 import CurrentUserContext from "./../contexts/CurrentUserContext"
 import EditProfilePopup from "./EditProfilePopup";
@@ -121,7 +120,6 @@ function App() {
     onCardClick={handleCardClick}
     cards={cards}
     onCardLike={handleCardLike}
-    onCardDelete={handleCardDelete}
     onCardBinClick={handleCardDeleteClick}
     />
     <Footer />
@@ -132,7 +130,7 @@ function App() {
     <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateAvatar} isLoading={isLoading}/>
     {/*Попап добавления карточки*/}
     <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onCardSubmit={handleAddPlace} isLoading={isLoading}/>
-    {/*TODO Попап удаления карточки*/}
+    {/*Попап удаления карточки*/}
     <DeleteCardPopup isOpen={isDeletePopupOpen} isLoading={isLoading} card={selectedCard} onClose={closeAllPopups} onCardDelete={handleCardDelete}/>
     {/*Попап открытия картинки*/}
     <ImagePopup onClose={closeAllPopups} card={selectedCard} />
