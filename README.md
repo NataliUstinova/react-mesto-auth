@@ -16,3 +16,6 @@
 - React
 - React useState hook 
 - React useEffect hook
+- Создан кастомный хук useValidation для валидации форм
+
+Ссылка на [Github Pages](https://nataliustinova.github.io/mesto-react/)
