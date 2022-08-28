@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import PopupWithForm from "./PopupWithForm";
 
-const AddPlacePopup = ({isOpen, onClose, onCardSubmit}) => {
+const AddPlacePopup = ({isOpen, onClose, onCardSubmit, isLoading}) => {
   
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
@@ -18,7 +18,7 @@ const AddPlacePopup = ({isOpen, onClose, onCardSubmit}) => {
     e.preventDefault();
     onCardSubmit({name: name, link: link});
   }
-  
+
   useEffect(() => {
     setName('');
     setLink('');
@@ -29,7 +29,7 @@ const AddPlacePopup = ({isOpen, onClose, onCardSubmit}) => {
       isOpen={isOpen}
       name="popup_add-pic"
       title="Новое место"
-      button="Добавить"
+      button={isLoading ? "Сохранение..." : "Добавить"}
       onClose={onClose}
       onSubmit={handleSubmit}>
       <input id="pic-title"
@@ -39,6 +39,7 @@ const AddPlacePopup = ({isOpen, onClose, onCardSubmit}) => {
              className="popup__input popup__input_value_pic-title"
              type="text"
              name="name"
+             value={name}
              placeholder="Название"
              onChange={handleNameChange}
       />
@@ -48,6 +49,7 @@ const AddPlacePopup = ({isOpen, onClose, onCardSubmit}) => {
              className="popup__input popup__input_value_pic-link"
              type="url"
              name="link"
+             value={link}
              placeholder="Ссылка на картинку"
       onChange={handleLinkChange}/>
       <span className="pic-link-error"></span>

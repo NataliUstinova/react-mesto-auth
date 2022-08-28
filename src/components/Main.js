@@ -3,7 +3,7 @@ import avatar from "../images/avatar.jpg";
 import Card from "./Card"
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-export default function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick, cards, onCardDelete, onCardLike, onCardSubmit}) {
+export default function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick, cards, onCardDelete, onCardLike, onCardBinClick}) {
   const currentUser = useContext(CurrentUserContext);
   
     return (
@@ -21,7 +21,7 @@ export default function Main({onEditAvatar, onAddPlace, onEditProfile, onCardCli
           
           <section className="cards">
             <ul className="cards__list">
-              {cards.map((card) => (<Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={onCardLike} onCardDelete={onCardDelete}/>))}
+              {cards.map((card) => (<Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={onCardLike} onCardDelete={onCardDelete} onCardBinClick={onCardBinClick}/>))}
             </ul>
           </section>
     </main>
