@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupWithForm from "./PopupWithForm";
 
-const DeleteCardPopup = ({isOpen, isLoading, card, onCardDelete, onClose}) => {
+const DeleteCardPopup = ({isOpen, isLoading, card, onCardDelete, onClose, onClick}) => {
   
   function handleCardDelete(e) {
     e.preventDefault();
@@ -11,6 +11,7 @@ const DeleteCardPopup = ({isOpen, isLoading, card, onCardDelete, onClose}) => {
   
   return (
     <PopupWithForm
+      onClick={onClick}
       isOpen={isOpen}
       isLoading={isLoading}
       onSubmit={handleCardDelete}

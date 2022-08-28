@@ -10,6 +10,7 @@ import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import DeleteCardPopup from "./DeleteCardPopup";
+import Popup from "./Popup";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
+  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
   
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
@@ -30,24 +32,25 @@ function App() {
   }, []);
   
   function handleCardClick(cardData) {
+    setIsImagePopupOpen(true);
     setSelectedCard(cardData);
   }
   
   function handleEditProfileClick() {
     setIsLoading(false);
-    setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
+    setIsEditProfilePopupOpen(true);
   }
   function handleAddPlaceClick() {
     setIsLoading(false);
-    setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
+    setIsAddPlacePopupOpen(true);
   }
   function handleEditAvatarClick() {
     setIsLoading(false);
-    setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
+    setIsEditAvatarPopupOpen(true);
   }
   function handleCardDeleteClick(card) {
     setIsLoading(false);
-    setIsDeletePopupOpen(!isDeletePopupOpen);
+    setIsDeletePopupOpen(true);
     setSelectedCard(card)
   }
 
@@ -56,7 +59,12 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setIsDeletePopupOpen(false);
+    setIsImagePopupOpen(false);
     setSelectedCard({name: "", link: ""});
+  }
+  
+  function handleOverlayClick(e) {
+    e.stopPropagation()
   }
 
   function handleUpdateUser(input) {
@@ -125,15 +133,16 @@ function App() {
     <Footer />
     
     {/*Попап редактирования профиля*/}
-    <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoading={isLoading}/>
+    <Popup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}><EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoading={isLoading} onClick={handleOverlayClick}/></Popup>
     {/*Попап изменения аватара*/}
-    <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateAvatar} isLoading={isLoading}/>
+    <Popup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}><EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateAvatar} isLoading={isLoading} onClick={handleOverlayClick}/></Popup>
     {/*Попап добавления карточки*/}
-    <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onCardSubmit={handleAddPlace} isLoading={isLoading}/>
+    <Popup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}><AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onCardSubmit={handleAddPlace} isLoading={isLoading} onClick={handleOverlayClick}/></Popup>
     {/*Попап удаления карточки*/}
-    <DeleteCardPopup isOpen={isDeletePopupOpen} isLoading={isLoading} card={selectedCard} onClose={closeAllPopups} onCardDelete={handleCardDelete}/>
+    <Popup isOpen={isDeletePopupOpen} onClose={closeAllPopups}><DeleteCardPopup isOpen={isDeletePopupOpen} isLoading={isLoading} card={selectedCard} onClose={closeAllPopups} onCardDelete={handleCardDelete} onClick={handleOverlayClick}/></Popup>
     {/*Попап открытия картинки*/}
-    <ImagePopup onClose={closeAllPopups} card={selectedCard} />
+    <Popup isOpen={isImagePopupOpen} onClose={closeAllPopups}><ImagePopup onClose={closeAllPopups} card={selectedCard} onClick={handleOverlayClick}/></Popup>
+      
   </div>
   </CurrentUserContext.Provider>
 }

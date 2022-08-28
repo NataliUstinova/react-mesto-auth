@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import PopupWithForm from "./PopupWithForm";
 
-const AddPlacePopup = ({isOpen, onClose, onCardSubmit, isLoading}) => {
+const AddPlacePopup = ({isOpen, onClose, onCardSubmit, isLoading, onClick}) => {
   
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
@@ -27,6 +27,7 @@ const AddPlacePopup = ({isOpen, onClose, onCardSubmit, isLoading}) => {
   return (
     <PopupWithForm
       isOpen={isOpen}
+      onClick={onClick}
       name="popup_add-pic"
       title="Новое место"
       button={isLoading ? "Сохранение..." : "Добавить"}
