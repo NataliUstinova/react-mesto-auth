@@ -18,7 +18,6 @@ const AddPlacePopup = ({isOpen, onClose, onCardSubmit, isLoading, onClick}) => {
     <PopupWithForm
       isOpen={isOpen}
       onClick={onClick}
-      name="popup_add-pic"
       title="Новое место"
       button={isLoading ? "Сохранение..." : "Добавить"}
       onClose={onClose}
@@ -28,23 +27,23 @@ const AddPlacePopup = ({isOpen, onClose, onCardSubmit, isLoading, onClick}) => {
              required
              minLength="2"
              maxLength="30"
-             className={errors.name ? `popup__input popup__input_value_pic popup__error_visible`:`popup__input`}
+             className={errors.name ? "popup__input popup__error_visible" : "popup__input"}
              type="text"
              name="name"
              value={values.name || ""}
              placeholder="Название"
              onChange={handleInputChange}
       />
-      <span className={errors.name ? "popup__input_type_error pic-title-error" : "pic-title-error"}>{errors.name}</span>
+      <span className={errors.name && "popup__input_type_error"}>{errors.name}</span>
       <input id="pic-link"
              required
-             className={errors.link ? `popup__input popup__input_value_pic-link popup__error_visible`:`popup__input popup__input_value_pic-link`} 
+             className={errors.link ? "popup__input popup__error_visible" : "popup__input"} 
              type="url"
              name="link"
              value={values.link || ""}
              placeholder="Ссылка на картинку"
       onChange={handleInputChange}/>
-      <span className={errors.link ? "popup__input_type_error popup__input_type_error-2" : "pic-title-error"}>{errors.link}</span>
+      <span className={errors.link && "popup__input_type_error popup__input_type_error-2"}>{errors.link}</span>
     </PopupWithForm>
   );
 };

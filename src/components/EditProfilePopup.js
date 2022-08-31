@@ -22,7 +22,6 @@ export default function EditProfilePopup({isOpen, onClose, onUpdateUser, isLoadi
     <PopupWithForm
       onClick={onClick}
       isOpen={isOpen}
-      name="popup_profile-info"
       title="Редактировать профиль"
       button={isLoading ? "Сохранение..." : "Сохранить"}
       onClose={onClose}
@@ -32,24 +31,24 @@ export default function EditProfilePopup({isOpen, onClose, onUpdateUser, isLoadi
              required
              minLength="2"
              maxLength="40"
-             className={`popup__input popup__input_value_name popup__text ${errors.name && 'popup__error_visible'}`}
+             className={`popup__input ${errors.name && "popup__error_visible"}`}
              type="text"
              name="name"
              placeholder="Имя"
              defaultValue={currentUser.name}
              onChange={handleInputChange}/>
-      <span className={errors.name ? "popup__input_type_error" : "profile-name-error"}>{errors.name}</span>
+      <span className={errors.name && "popup__input_type_error"}>{errors.name}</span>
       <input id="profile-job"
              required
              minLength="2"
              maxLength="200"
-             className={`popup__input popup__input_value_job popup__text ${errors.about && 'popup__error_visible'}`}
+             className={`popup__input ${errors.about && "popup__error_visible"}`}
              type="text"
              name="about"
              defaultValue={currentUser.about}
              placeholder="Деятельность"
              onChange={handleInputChange}/>
-      <span className={errors.about ? "popup__input_type_error popup__input_type_error-2 profile-job-error" : "profile-job-error"}>{errors.about}</span>
+      <span className={errors.about && "popup__input_type_error popup__input_type_error-2"}>{errors.about}</span>
     </PopupWithForm>
   );
 };

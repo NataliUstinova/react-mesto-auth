@@ -17,12 +17,12 @@ const DeleteCardPopup = ({isOpen, isLoading, card, onCardDelete, onClose, onClic
   
   return (
     <PopupWithForm
+      onClose={onClose}
       onClick={onClick}
       isOpen={isOpen}
       isLoading={isLoading}
       isDisabled={isDisabled}
       onSubmit={handleCardDelete}
-      name="popup_delete-pic"
       title="Вы уверены?"
       button={isLoading? "Удаление..." : "Да"}
     />
