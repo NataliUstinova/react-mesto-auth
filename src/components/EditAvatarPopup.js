@@ -22,7 +22,7 @@ const EditAvatarPopup = ({isOpen, onClose, onUpdateUser, isLoading, onClick}) =>
       isOpen={isOpen}
       onClick={onClick}
       isDisabled={!isDisabled}
-      name="popup_edit-avatar"
+      name=""
       title="Обновить аватар"
       button={isLoading ? "Сохранение..." : "Сохранить"}
       onClose={onClose}

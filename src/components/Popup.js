@@ -16,8 +16,14 @@ const Popup = ({isOpen, onClose, children}) => {
     }
   }, [isOpen])
   
+  function handleCloseOverlay(e) {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  }
+  
   return (
-    <div className={`popup ${isOpen && "popup_opened"}`} onClick={onClose}>
+    <div className={`popup ${isOpen && "popup_opened"}`} onClick={handleCloseOverlay}>
       {children}
     </div>
   );

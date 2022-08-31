@@ -10,7 +10,6 @@ import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import DeleteCardPopup from "./DeleteCardPopup";
-import Popup from "./Popup";
 
 
 function App() {
@@ -63,10 +62,6 @@ function App() {
     setSelectedCard({name: "", link: ""});
   }
   
-  function handleOverlayClick(e) {
-    e.stopPropagation()
-  }
-
   function handleUpdateUser(input) {
     setIsLoading(true);
     api.editProfile(input)
@@ -97,7 +92,8 @@ function App() {
     setIsLoading(true);
     api.addUserCard(newCard)
       .then(newCard => {
-        setCards([newCard, ...cards]);
+        // prev для гарантии предыдущего состояния
+        setCards(prev => [newCard, ...prev]);
         closeAllPopups();
       }).catch(err => console.log(err));
   }
@@ -133,16 +129,15 @@ function App() {
     <Footer />
     
     {/*Попап редактирования профиля*/}
-    <Popup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}><EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoading={isLoading} onClick={handleOverlayClick}/></Popup>
+    <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoading={isLoading}/>
     {/*Попап изменения аватара*/}
-    <Popup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}><EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateAvatar} isLoading={isLoading} onClick={handleOverlayClick}/></Popup>
+    <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateAvatar} isLoading={isLoading}/>
     {/*Попап добавления карточки*/}
-    <Popup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}><AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onCardSubmit={handleAddPlace} isLoading={isLoading} onClick={handleOverlayClick}/></Popup>
+    <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onCardSubmit={handleAddPlace} isLoading={isLoading}/>
     {/*Попап удаления карточки*/}
-    <Popup isOpen={isDeletePopupOpen} onClose={closeAllPopups}><DeleteCardPopup isOpen={isDeletePopupOpen} isLoading={isLoading} card={selectedCard} onClose={closeAllPopups} onCardDelete={handleCardDelete} onClick={handleOverlayClick}/></Popup>
+    <DeleteCardPopup isOpen={isDeletePopupOpen} isLoading={isLoading} card={selectedCard} onClose={closeAllPopups} onCardDelete={handleCardDelete}/>
     {/*Попап открытия картинки*/}
-    <Popup isOpen={isImagePopupOpen} onClose={closeAllPopups}><ImagePopup onClose={closeAllPopups} card={selectedCard} onClick={handleOverlayClick}/></Popup>
-      
+    <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} card={selectedCard}/>
   </div>
   </CurrentUserContext.Provider>
 }
