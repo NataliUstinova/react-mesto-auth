@@ -15,7 +15,19 @@ const EditAvatarPopup = ({isOpen, onClose, onUpdateUser, isLoading, onClick}) =>
       avatar: values.avatar
     });
   }
-  
+
+  //пример с использованием useRef
+  // const avatarRef = React.useRef()
+  // useEffect(() => {
+  //   avatarRef.current.value = ''
+  // }, [isOpen])
+  //
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   onUpdateUser({
+  //     avatar: avatarRef.current.value
+  //   });
+  // }
   
   return (
     <PopupWithForm
@@ -28,6 +40,8 @@ const EditAvatarPopup = ({isOpen, onClose, onUpdateUser, isLoading, onClick}) =>
       onSubmit={handleSubmit}>
       <input id="avatar" 
              required
+             //пример с использованием useRef
+             // ref={avatarRef}
              value={values.avatar || ""}
              className={`popup__input ${errors.avatar && "popup__error_visible"}`}
              type="url"
