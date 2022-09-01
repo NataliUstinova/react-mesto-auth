@@ -7,12 +7,11 @@ export default function PopupWithForm({
   children,
   onClose,
   onSubmit,
-  onClick,
   isDisabled,
 }) {
   return (
     <Popup isOpen={isOpen} onClose={onClose}>
-      <div className="popup__container" onClick={onClick}>
+      <div className="popup__container">
         <h3 className="popup__heading">{title}</h3>
         <form className="popup__form" noValidate onSubmit={onSubmit}>
           {children}
@@ -22,12 +21,6 @@ export default function PopupWithForm({
           >
             {button || "Сохранить"}
           </button>
-          <button
-            onClick={onClose}
-            className="popup__close"
-            type="button"
-            aria-label="Закрыть"
-          ></button>
         </form>
       </div>
     </Popup>

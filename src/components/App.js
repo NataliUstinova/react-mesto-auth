@@ -34,21 +34,16 @@ function App() {
     setIsImagePopupOpen(true);
     setSelectedCard(cardData);
   }
-
   function handleEditProfileClick() {
-    setIsLoading(false);
     setIsEditProfilePopupOpen(true);
   }
   function handleAddPlaceClick() {
-    setIsLoading(false);
     setIsAddPlacePopupOpen(true);
   }
   function handleEditAvatarClick() {
-    setIsLoading(false);
     setIsEditAvatarPopupOpen(true);
   }
   function handleCardDeleteClick(card) {
-    setIsLoading(false);
     setIsDeletePopupOpen(true);
     setSelectedCard(card);
   }
@@ -70,7 +65,8 @@ function App() {
         setCurrentUser(input);
         closeAllPopups();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));
   }
 
   function handleUpdateAvatar(input) {
@@ -81,7 +77,8 @@ function App() {
         setCurrentUser(input);
         closeAllPopups();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));
   }
 
   // Cards
@@ -101,7 +98,8 @@ function App() {
         setCards((prev) => [newCard, ...prev]);
         closeAllPopups();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));;
   }
 
   function handleCardLike(card) {
@@ -120,12 +118,11 @@ function App() {
     api
       .deleteCard(deletedCard._id)
       .then(() => {
-        const updatedCards = cards.filter(
-          (card) => card._id !== deletedCard._id
-        );
-        setCards(updatedCards);
+        setCards((state) => state.filter((item) => item._id !== deletedCard._id));
+        closeAllPopups();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));;
   }
 
   return (

@@ -2,13 +2,7 @@ import React, { useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 import useValidation from "../hooks/useValidation";
 
-const EditAvatarPopup = ({
-  isOpen,
-  onClose,
-  onUpdateUser,
-  isLoading,
-  onClick,
-}) => {
+const EditAvatarPopup = ({ isOpen, onClose, onUpdateUser, isLoading }) => {
   const { values, errors, isDisabled, handleInputChange, resetForm } =
     useValidation({});
 
@@ -39,7 +33,6 @@ const EditAvatarPopup = ({
   return (
     <PopupWithForm
       isOpen={isOpen}
-      onClick={onClick}
       isDisabled={!isDisabled}
       title="Обновить аватар"
       button={isLoading ? "Сохранение..." : "Сохранить"}

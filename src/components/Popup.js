@@ -17,7 +17,7 @@ const Popup = ({ isOpen, onClose, children }) => {
   }, [isOpen]);
 
   function handleCloseOverlay(e) {
-    if (e.target === e.currentTarget) {
+    if (e.target === e.currentTarget || e.target.classList.contains("popup__close")) {
       onClose();
     }
   }
@@ -27,7 +27,14 @@ const Popup = ({ isOpen, onClose, children }) => {
       className={`popup ${isOpen && "popup_opened"}`}
       onClick={handleCloseOverlay}
     >
-      {children}
+      <div className="popup__relative-container">
+        {children}
+        <button
+          className="popup__close"
+          type="button"
+          aria-label="Закрыть"
+        ></button>
+      </div>
     </div>
   );
 };

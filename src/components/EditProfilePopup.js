@@ -9,7 +9,6 @@ export default function EditProfilePopup({
   onClose,
   onUpdateUser,
   isLoading,
-  onClick,
 }) {
   const { values, errors, isDisabled, handleInputChange, resetForm } =
     useValidation({});
@@ -17,8 +16,8 @@ export default function EditProfilePopup({
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
-    resetForm();
-  }, [onClose, resetForm]);
+    resetForm(currentUser);
+  }, [currentUser, isOpen, resetForm]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -30,7 +29,6 @@ export default function EditProfilePopup({
 
   return (
     <PopupWithForm
-      onClick={onClick}
       isOpen={isOpen}
       title="Редактировать профиль"
       button={isLoading ? "Сохранение..." : "Сохранить"}
@@ -47,7 +45,7 @@ export default function EditProfilePopup({
         type="text"
         name="name"
         placeholder="Имя"
-        defaultValue={currentUser.name}
+        value={values.name || ""}
         onChange={handleInputChange}
       />
       <span className={errors.name && "popup__input_type_error"}>
@@ -61,7 +59,7 @@ export default function EditProfilePopup({
         className={`popup__input ${errors.about && "popup__error_visible"}`}
         type="text"
         name="about"
-        defaultValue={currentUser.about}
+        value={values.about || ""}
         placeholder="Деятельность"
         onChange={handleInputChange}
       />
