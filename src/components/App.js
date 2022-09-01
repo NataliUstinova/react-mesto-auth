@@ -99,7 +99,7 @@ function App() {
         closeAllPopups();
       })
       .catch((err) => console.log(err))
-      .finally(() => setIsLoading(false));;
+      .finally(() => setIsLoading(false));
   }
 
   function handleCardLike(card) {
@@ -118,11 +118,13 @@ function App() {
     api
       .deleteCard(deletedCard._id)
       .then(() => {
-        setCards((state) => state.filter((item) => item._id !== deletedCard._id));
+        setCards((state) =>
+          state.filter((item) => item._id !== deletedCard._id)
+        );
         closeAllPopups();
       })
       .catch((err) => console.log(err))
-      .finally(() => setIsLoading(false));;
+      .finally(() => setIsLoading(false));
   }
 
   return (

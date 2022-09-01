@@ -17,7 +17,10 @@ const Popup = ({ isOpen, onClose, children }) => {
   }, [isOpen]);
 
   function handleCloseOverlay(e) {
-    if (e.target === e.currentTarget || e.target.classList.contains("popup__close")) {
+    if (
+      e.target === e.currentTarget ||
+      e.target.classList.contains("popup__close")
+    ) {
       onClose();
     }
   }
