@@ -16,14 +16,16 @@ export default function EditProfilePopup({
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
-    resetForm(currentUser);
+    if (currentUser) {
+      resetForm(currentUser);
+    }
   }, [currentUser, isOpen, resetForm]);
 
   function handleSubmit(e) {
     e.preventDefault();
     onUpdateUser({
-      name: values.name || currentUser.name,
-      about: values.about || currentUser.about,
+      name: values.name,
+      about: values.about,
     });
   }
 

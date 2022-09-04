@@ -8,7 +8,7 @@ const EditAvatarPopup = ({ isOpen, onClose, onUpdateUser, isLoading }) => {
 
   useEffect(() => {
     resetForm();
-  }, [isOpen, onClose, resetForm]);
+  }, [isOpen, resetForm]);
 
   function handleSubmit(e) {
     e.preventDefault();

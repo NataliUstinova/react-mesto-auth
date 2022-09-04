@@ -13,7 +13,7 @@ const AddPlacePopup = ({ isOpen, onClose, onCardSubmit, isLoading }) => {
 
   useEffect(() => {
     resetForm();
-  }, [isOpen, onClose, resetForm]);
+  }, [isOpen, resetForm]);
 
   return (
     <PopupWithForm

@@ -28,6 +28,11 @@ function App() {
       .getUserInfoServer()
       .then((res) => setCurrentUser(res))
       .catch((err) => console.log(err));
+
+    api
+      .getInitialCards()
+      .then((res) => setCards(res))
+      .catch((err) => console.log(err));
   }, []);
 
   function handleCardClick(cardData) {
@@ -82,13 +87,6 @@ function App() {
   }
 
   // Cards
-  useEffect(() => {
-    api
-      .getInitialCards()
-      .then((res) => setCards(res))
-      .catch((err) => console.log(err));
-  }, []);
-
   function handleAddPlace(newCard) {
     setIsLoading(true);
     api
