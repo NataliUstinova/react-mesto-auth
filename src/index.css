@@ -151,3 +151,43 @@
 .auth__link:hover {
   opacity: 0.5;
 }
+
+.modal__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 540px) {
+  .modal__container {
+    /*TODO*/
+    min-width: 282px;
+    padding: 0;
+  }
+}
+
+.modal__icon {
+  margin: 24px auto 32px;
+  align-self: center;
+}
+
+.modal__heading {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  text-align: center;
+  color: #000;
+  max-width: 358px;
+  margin: 0 0 21px 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 540px) {
+  .modal__heading {
+    /*TODO*/
+    margin: 25px 22px;
+    font-size: 18px;
+    line-height: 1.22;
+  }
+}

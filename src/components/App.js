@@ -14,6 +14,7 @@ import { Route, Switch } from "react-router-dom";
 import SignUp from "./SignUp";
 import Login from "./Login";
 import React from "react";
+import Modal from "./Modal";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -135,6 +136,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Header link="/" linkText="" />
+            <Modal isOpen={true} onClose={closeAllPopups} />
             <Main
               onEditProfile={handleEditProfileClick}
               onEditAvatar={handleEditAvatarClick}
