@@ -7,12 +7,17 @@ export default function useValidation() {
 
   function handleInputChange(e) {
     const name = e.target.name;
-    const value = e.target.value;
+    const value = e.target.value.trim();
     const eventTarget = e.target;
 
     setValues({ ...values, [name]: value });
     setErrors({ ...errors, [name]: eventTarget.validationMessage });
-    setIsDisabled(eventTarget.closest(".popup__form").checkValidity());
+
+    if (name === "email" || name === "password") {
+      setIsDisabled(eventTarget.closest(".auth__form").checkValidity());
+    } else {
+      setIsDisabled(eventTarget.closest(".popup__form").checkValidity());
+    }
   }
 
   const resetForm = useCallback(

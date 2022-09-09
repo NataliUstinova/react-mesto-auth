@@ -10,6 +10,10 @@ import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import DeleteCardPopup from "./DeleteCardPopup";
+import { Route, Switch } from "react-router-dom";
+import SignUp from "./SignUp";
+import Login from "./Login";
+import React from "react";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -128,53 +132,65 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Header />
-        <Main
-          onEditProfile={handleEditProfileClick}
-          onEditAvatar={handleEditAvatarClick}
-          onAddPlace={handleAddPlaceClick}
-          onCardClick={handleCardClick}
-          cards={cards}
-          onCardLike={handleCardLike}
-          onCardBinClick={handleCardDeleteClick}
-        />
-        <Footer />
+        <Switch>
+          <Route exact path="/">
+            <Header link="/" linkText="" />
+            <Main
+              onEditProfile={handleEditProfileClick}
+              onEditAvatar={handleEditAvatarClick}
+              onAddPlace={handleAddPlaceClick}
+              onCardClick={handleCardClick}
+              cards={cards}
+              onCardLike={handleCardLike}
+              onCardBinClick={handleCardDeleteClick}
+            />
+            <Footer />
 
-        {/*Попап редактирования профиля*/}
-        <EditProfilePopup
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-          onUpdateUser={handleUpdateUser}
-          isLoading={isLoading}
-        />
-        {/*Попап изменения аватара*/}
-        <EditAvatarPopup
-          isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}
-          onUpdateUser={handleUpdateAvatar}
-          isLoading={isLoading}
-        />
-        {/*Попап добавления карточки*/}
-        <AddPlacePopup
-          isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups}
-          onCardSubmit={handleAddPlace}
-          isLoading={isLoading}
-        />
-        {/*Попап удаления карточки*/}
-        <DeleteCardPopup
-          isOpen={isDeletePopupOpen}
-          isLoading={isLoading}
-          card={selectedCard}
-          onClose={closeAllPopups}
-          onCardDelete={handleCardDelete}
-        />
-        {/*Попап открытия картинки*/}
-        <ImagePopup
-          isOpen={isImagePopupOpen}
-          onClose={closeAllPopups}
-          card={selectedCard}
-        />
+            {/*Попап редактирования профиля*/}
+            <EditProfilePopup
+              isOpen={isEditProfilePopupOpen}
+              onClose={closeAllPopups}
+              onUpdateUser={handleUpdateUser}
+              isLoading={isLoading}
+            />
+            {/*Попап изменения аватара*/}
+            <EditAvatarPopup
+              isOpen={isEditAvatarPopupOpen}
+              onClose={closeAllPopups}
+              onUpdateUser={handleUpdateAvatar}
+              isLoading={isLoading}
+            />
+            {/*Попап добавления карточки*/}
+            <AddPlacePopup
+              isOpen={isAddPlacePopupOpen}
+              onClose={closeAllPopups}
+              onCardSubmit={handleAddPlace}
+              isLoading={isLoading}
+            />
+            {/*Попап удаления карточки*/}
+            <DeleteCardPopup
+              isOpen={isDeletePopupOpen}
+              isLoading={isLoading}
+              card={selectedCard}
+              onClose={closeAllPopups}
+              onCardDelete={handleCardDelete}
+            />
+            {/*Попап открытия картинки*/}
+            <ImagePopup
+              isOpen={isImagePopupOpen}
+              onClose={closeAllPopups}
+              card={selectedCard}
+            />
+          </Route>
+          <Route path="/sign-up">
+            <Header link="/login" linkText="Войти" />
+            <SignUp />
+          </Route>
+          <Route path="/login">
+            <Header link="/sign-up" linkText="Регистрация" />
+            <Login />
+          </Route>
+        </Switch>
       </div>
     </CurrentUserContext.Provider>
   );

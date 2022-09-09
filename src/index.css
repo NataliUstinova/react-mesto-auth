@@ -5,6 +5,7 @@
 
 @import url('./blocks/header/header.css');
 @import url('./blocks/header/__logo/header__logo.css');
+@import url('./blocks/header/__link/header__link.css');
 
 @import url('./blocks/profile/profile.css');
 @import url('./blocks/profile/__avatar/profile__avatar.css');
@@ -45,3 +46,108 @@
 @import url('./blocks/popup/__input/_type/popup__input_type_error.css');
 @import url('./blocks/popup/__error/popup__error_visible.css');
 @import url('./blocks/popup/__save/_disabled/popup__save_disabled.css');
+
+
+.auth__title {
+  text-align: center;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 900;
+  max-width: 358px;
+  margin: 60px 0 50px;
+}
+
+.auth__container {
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 358px;
+  position: relative;
+}
+
+.auth__form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth__input {
+  color: #fff;
+  background-color: #000;
+  border-bottom: 1px solid #fff;
+  
+}
+.auth__button {
+  height: 50px;
+  width: 358px;
+  margin: 216px auto 15px;
+  border: none;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+.auth__button:hover {
+  opacity: 0.85;
+}
+
+.auth__input_type_error {
+  color: #FF0000;
+  font-size: 12px;
+  line-height: 1.21;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 171px;
+  left: 0;
+  z-index: 1;
+  max-width: 358px;
+}
+
+.auth__input_type_error-2 {
+  top: 233px;
+  left: 0;
+}
+
+@media screen and (max-width: 540px) {
+  .auth__input_type_error {
+    top: 147px;
+    left: 22px;
+  }
+
+  .auth__input_type_error-2 {
+    top: 233px;
+  }
+}
+
+.auth__button_disabled {
+  pointer-events: none;
+  background: transparent;
+  border: 1px solid #ccc;
+  color: #ccc;
+  border-radius: 2px;
+}
+
+.auth__text-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.auth__text {
+  margin: 0;
+  padding: 0;
+}
+
+.auth__link {
+  padding-left: 5px;
+  text-decoration: none;
+}
+.auth__link:visited {
+  color: #fff;
+}
+.auth__link:hover {
+  opacity: 0.5;
+}
