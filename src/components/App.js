@@ -28,6 +28,9 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
   const [isLoading, setIsLoading] = useState(false);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
   useEffect(() => {
     api
       .getUserInfoServer()
@@ -64,6 +67,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsDeletePopupOpen(false);
     setIsImagePopupOpen(false);
+    setIsModalOpen(false);
     setSelectedCard({ name: "", link: "" });
   }
 
@@ -136,7 +140,11 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Header link="/" linkText="" />
-            <Modal isOpen={true} onClose={closeAllPopups} />
+            <Modal
+              isOpen={isModalOpen}
+              onClose={closeAllPopups}
+              isSuccess={isSuccess}
+            />
             <Main
               onEditProfile={handleEditProfileClick}
               onEditAvatar={handleEditAvatarClick}

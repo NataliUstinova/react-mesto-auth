@@ -170,6 +170,8 @@
 .modal__icon {
   margin: 24px auto 32px;
   align-self: center;
+  width: 120px;
+  height: 120px;
 }
 
 .modal__heading {
