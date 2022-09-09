@@ -3,7 +3,7 @@
   left: 0px;
   right: 0px;
   background-color: #fff;
-  z-index: 1;
+  z-index: -1;
   border-radius: 10px;
   min-width: 430px;
   box-sizing: border-box;

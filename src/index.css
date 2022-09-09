@@ -72,6 +72,7 @@
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;
+  z-index: 0;
 }
 
 .auth__input {

@@ -140,11 +140,6 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Header link="/" linkText="" />
-            <Modal
-              isOpen={isModalOpen}
-              onClose={closeAllPopups}
-              isSuccess={isSuccess}
-            />
             <Main
               onEditProfile={handleEditProfileClick}
               onEditAvatar={handleEditAvatarClick}
@@ -193,10 +188,20 @@ function App() {
             />
           </Route>
           <Route path="/sign-up">
+            <Modal
+              isOpen={isModalOpen}
+              onClose={closeAllPopups}
+              isSuccess={isSuccess}
+            />
             <Header link="/login" linkText="Войти" />
             <SignUp />
           </Route>
           <Route path="/login">
+            <Modal
+              isOpen={true}
+              onClose={closeAllPopups}
+              isSuccess={isSuccess}
+            />
             <Header link="/sign-up" linkText="Регистрация" />
             <Login />
           </Route>
