@@ -57,6 +57,16 @@
   margin: 60px 0 50px;
 }
 
+@media screen and (max-width: 900px) {
+  .auth__title {
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 24px;
+    text-align: center;
+    margin: 40px 0;
+  }
+}
+
 .auth__container {
   margin: 0 auto;
   display: flex;
@@ -81,6 +91,17 @@
   border-bottom: 1px solid #fff;
   
 }
+
+@media screen and (max-width: 900px) {
+  .auth__input {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    text-align: left;
+    width: 260px;
+  }
+}
+
 .auth__button {
   height: 50px;
   width: 358px;
@@ -89,11 +110,21 @@
   background-color: #fff;
   color: #000;
   cursor: pointer;
+  border-radius: 2px;
 }
 
 .auth__button:hover {
   opacity: 0.85;
 }
+
+@media screen and (max-width: 900px) {
+  .auth__button {
+    height: 46px;
+    width: 260px;
+  }
+}
+
+
 
 .auth__input_type_error {
   color: #FF0000;
@@ -108,19 +139,24 @@
   max-width: 358px;
 }
 
+.auth__error_visible {
+  border-bottom: 1px solid #FF0000;
+}
+
 .auth__input_type_error-2 {
   top: 233px;
   left: 0;
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 900px) {
   .auth__input_type_error {
-    top: 147px;
-    left: 22px;
+    width: 260px;
+    top: 179px;
+    left: 60px;
   }
-
   .auth__input_type_error-2 {
-    top: 233px;
+    width: 260px;
+    top: 241px;
   }
 }
 
@@ -140,6 +176,11 @@
 .auth__text {
   margin: 0;
   padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  text-align: center;
+
 }
 
 .auth__link {
@@ -162,9 +203,7 @@
 
 @media screen and (max-width: 540px) {
   .modal__container {
-    /*TODO*/
-    min-width: 282px;
-    padding: 0;
+    width: 280px;
   }
 }
 
@@ -173,6 +212,12 @@
   align-self: center;
   width: 120px;
   height: 120px;
+}
+
+@media screen and (max-width: 540px) {
+  .modal__icon {
+    margin: 50px auto 40px;
+  }
 }
 
 .modal__heading {
@@ -188,9 +233,8 @@
 
 @media screen and (max-width: 540px) {
   .modal__heading {
-    /*TODO*/
-    margin: 25px 22px;
-    font-size: 18px;
-    line-height: 1.22;
+    margin-bottom: 40px;
+    font-size: 20px;
+    line-height: 24px;
   }
 }

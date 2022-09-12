@@ -2,12 +2,12 @@ import React from "react";
 import useValidation from "../hooks/useValidation";
 import { useEffect } from "react";
 
-const Auth = ({ title, buttonText, children }) => {
+const Auth = ({ title, buttonText, autocomplete, children }) => {
   const { values, errors, isDisabled, handleInputChange, resetForm } =
     useValidation({});
-  useEffect(() => {
-    resetForm();
-  }, [resetForm]);
+  // useEffect(() => {
+  //   resetForm();
+  // }, [resetForm]);
 
   return (
     <div className="auth__container">
@@ -15,11 +15,12 @@ const Auth = ({ title, buttonText, children }) => {
       <form className="auth__form">
         <input
           id="sign-up-email"
+          autoComplete="email"
           required
           minLength="2"
           maxLength="40"
           className={`popup__input auth__input ${
-            errors.email && "popup__error_visible"
+            errors.email && "auth__error_visible"
           }`}
           type="email"
           name="email"
@@ -31,14 +32,15 @@ const Auth = ({ title, buttonText, children }) => {
           {errors.email}
         </span>
         <input
-          id="sign-up-password"
+          id="pswd"
+          autoComplete={autocomplete}
           required
           minLength="6"
           maxLength="200"
           className={`popup__input auth__input ${
-            errors.password && "popup__error_visible"
+            errors.password && "auth__error_visible"
           }`}
-          type="text"
+          type="password"
           name="password"
           value={values.password || ""}
           placeholder="Пароль"

@@ -3,7 +3,7 @@ import Popup from "./Popup";
 import fail from "../images/fail.svg";
 import success from "../images/success.svg";
 
-const Modal = ({ isOpen, onClose, isSuccess }) => {
+const InfoTooltip = ({ isOpen, onClose, isSuccess }) => {
   return (
     <>
       <Popup isOpen={isOpen} onClose={onClose}>
@@ -26,4 +26,4 @@ const Modal = ({ isOpen, onClose, isSuccess }) => {
   );
 };
 
-export default Modal;
+export default InfoTooltip;

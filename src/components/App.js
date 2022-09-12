@@ -14,7 +14,7 @@ import { Route, Switch } from "react-router-dom";
 import SignUp from "./SignUp";
 import Login from "./Login";
 import React from "react";
-import Modal from "./Modal";
+import InfoTooltip from "./InfoTooltip";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -139,7 +139,7 @@ function App() {
       <div className="page">
         <Switch>
           <Route exact path="/">
-            <Header link="/" linkText="" />
+            <Header link="/sign-up" linkText="Регистрация" />
             <Main
               onEditProfile={handleEditProfileClick}
               onEditAvatar={handleEditAvatarClick}
@@ -188,7 +188,7 @@ function App() {
             />
           </Route>
           <Route path="/sign-up">
-            <Modal
+            <InfoTooltip
               isOpen={isModalOpen}
               onClose={closeAllPopups}
               isSuccess={isSuccess}
@@ -197,10 +197,10 @@ function App() {
             <SignUp />
           </Route>
           <Route path="/login">
-            <Modal
+            <InfoTooltip
               isOpen={true}
               onClose={closeAllPopups}
-              isSuccess={isSuccess}
+              isSuccess={!isSuccess}
             />
             <Header link="/sign-up" linkText="Регистрация" />
             <Login />
