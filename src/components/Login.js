@@ -4,7 +4,7 @@ import Auth from "./Auth";
 const Login = () => {
   return (
     <Auth
-      title="Войти"
+      title="Вход"
       buttonText="Войти"
       autocomplete="current-password"
     ></Auth>

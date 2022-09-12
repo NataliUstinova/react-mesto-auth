@@ -41,200 +41,24 @@
 @import url('./blocks/popup/__close/popup__close.css');
 @import url('./blocks/popup/__description/popup__description.css');
 @import url('./blocks/popup/__full-image/popup__full-image.css');
-@import url('blocks/popup/__relative-container/popup__relative-container.css');
+@import url('./blocks/popup/__relative-container/popup__relative-container.css');
 @import url('./blocks/popup/__show-pic/popup__show-pic.css');
 @import url('./blocks/popup/__input/_type/popup__input_type_error.css');
 @import url('./blocks/popup/__error/popup__error_visible.css');
 @import url('./blocks/popup/__save/_disabled/popup__save_disabled.css');
 
+@import url('./blocks/auth/__title/auth__title.css');
+@import url('./blocks/auth/__container/auth__container.css');
+@import url('./blocks/auth/__form/auth__form.css');
+@import url('./blocks/auth/__input/auth__input.css');
+@import url('./blocks/auth/__input/_type/auth__input_type_error.css');
+@import url('./blocks/auth/__button/auth__button.css');
+@import url('./blocks/auth/__button/_disabled/auth__button_disabled.css');
+@import url('./blocks/auth/__error/_visible/auth__error_visible.css');
+@import url('./blocks/auth/__text-container/auth__text-container.css');
+@import url('./blocks/auth/__text/auth__text.css');
+@import url('./blocks/auth/__link/auth__link.css');
 
-.auth__title {
-  text-align: center;
-  font-size: 24px;
-  line-height: 29px;
-  font-weight: 900;
-  max-width: 358px;
-  margin: 60px 0 50px;
-}
-
-@media screen and (max-width: 900px) {
-  .auth__title {
-    font-size: 20px;
-    font-weight: 900;
-    line-height: 24px;
-    text-align: center;
-    margin: 40px 0;
-  }
-}
-
-.auth__container {
-  margin: 0 auto;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  max-width: 358px;
-  position: relative;
-}
-
-.auth__form {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 0;
-}
-
-.auth__input {
-  color: #fff;
-  background-color: #000;
-  border-bottom: 1px solid #fff;
-  
-}
-
-@media screen and (max-width: 900px) {
-  .auth__input {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
-    text-align: left;
-    width: 260px;
-  }
-}
-
-.auth__button {
-  height: 50px;
-  width: 358px;
-  margin: 216px auto 15px;
-  border: none;
-  background-color: #fff;
-  color: #000;
-  cursor: pointer;
-  border-radius: 2px;
-}
-
-.auth__button:hover {
-  opacity: 0.85;
-}
-
-@media screen and (max-width: 900px) {
-  .auth__button {
-    height: 46px;
-    width: 260px;
-  }
-}
-
-
-
-.auth__input_type_error {
-  color: #FF0000;
-  font-size: 12px;
-  line-height: 1.21;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 171px;
-  left: 0;
-  z-index: 1;
-  max-width: 358px;
-}
-
-.auth__error_visible {
-  border-bottom: 1px solid #FF0000;
-}
-
-.auth__input_type_error-2 {
-  top: 233px;
-  left: 0;
-}
-
-@media screen and (max-width: 900px) {
-  .auth__input_type_error {
-    width: 260px;
-    top: 179px;
-    left: 60px;
-  }
-  .auth__input_type_error-2 {
-    width: 260px;
-    top: 241px;
-  }
-}
-
-.auth__button_disabled {
-  pointer-events: none;
-  background: transparent;
-  border: 1px solid #ccc;
-  color: #ccc;
-  border-radius: 2px;
-}
-
-.auth__text-container {
-  display: flex;
-  flex-direction: row;
-}
-
-.auth__text {
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 17px;
-  text-align: center;
-
-}
-
-.auth__link {
-  padding-left: 5px;
-  text-decoration: none;
-}
-.auth__link:visited {
-  color: #fff;
-}
-.auth__link:hover {
-  opacity: 0.5;
-}
-
-.modal__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-@media screen and (max-width: 540px) {
-  .modal__container {
-    width: 280px;
-  }
-}
-
-.modal__icon {
-  margin: 24px auto 32px;
-  align-self: center;
-  width: 120px;
-  height: 120px;
-}
-
-@media screen and (max-width: 540px) {
-  .modal__icon {
-    margin: 50px auto 40px;
-  }
-}
-
-.modal__heading {
-  font-size: 24px;
-  font-weight: 900;
-  line-height: 29px;
-  text-align: center;
-  color: #000;
-  max-width: 358px;
-  margin: 0 0 21px 0;
-  padding: 0;
-}
-
-@media screen and (max-width: 540px) {
-  .modal__heading {
-    margin-bottom: 40px;
-    font-size: 20px;
-    line-height: 24px;
-  }
-}
+@import url('./blocks/modal/__container/modal__container.css');
+@import url('./blocks/modal/__icon/modal__icon.css');
+@import url('./blocks/modal/__heading/modal__heading.css');

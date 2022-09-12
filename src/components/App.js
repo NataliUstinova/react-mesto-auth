@@ -198,9 +198,9 @@ function App() {
           </Route>
           <Route path="/login">
             <InfoTooltip
-              isOpen={true}
+              isOpen={isModalOpen}
               onClose={closeAllPopups}
-              isSuccess={!isSuccess}
+              isSuccess={isSuccess}
             />
             <Header link="/sign-up" linkText="Регистрация" />
             <Login />
