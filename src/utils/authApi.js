@@ -8,6 +8,8 @@ export const register = (email, password) => {
     method: "POST",
     // credentials: "include",
     headers: {
+      "Access-Control-Allow-Origin": "http://localhost:3000",
+      "Access-Control-Allow-Credentials": true,
       Accept: "application/json",
       "Content-Type": "application/json",
     },

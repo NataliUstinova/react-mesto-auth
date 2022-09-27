@@ -8,7 +8,6 @@ const SignUp = ({ onRegister }) => {
       onRegister={onRegister}
       isLoginForm={false}
       title="Регистрация"
-      buttonText="Зарегистрироваться"
       autocomplete="new-password"
     >
       <div className="auth__text-container">

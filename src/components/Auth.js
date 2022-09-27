@@ -1,10 +1,8 @@
 import React from "react";
 import useValidation from "../hooks/useValidation";
-import { useState } from "react";
 
 const Auth = ({
   title,
-  buttonText,
   autocomplete,
   children,
   isLoginForm,
@@ -73,7 +71,7 @@ const Auth = ({
           }
           type="submit"
         >
-          {isLoginForm ? "Войти" : "Регистрация"}
+          {isLoginForm ? "Войти" : "Зарегистрироваться"}
         </button>
         {children}
       </form>
