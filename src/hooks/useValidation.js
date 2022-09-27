@@ -13,7 +13,6 @@ export default function useValidation() {
     setValues({ ...values, [name]: value });
     setErrors({ ...errors, [name]: eventTarget.validationMessage });
     // setIsDisabled(eventTarget.closest(".popup__form").checkValidity());
-
     if (name === "email" || name === "password") {
       setIsDisabled(eventTarget.closest(".auth__form").checkValidity());
     } else {
