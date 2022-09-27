@@ -1,18 +1,32 @@
 import React from "react";
 import useValidation from "../hooks/useValidation";
-import { useEffect } from "react";
+import { useState } from "react";
 
-const Auth = ({ title, buttonText, autocomplete, children }) => {
+const Auth = ({
+  title,
+  buttonText,
+  autocomplete,
+  children,
+  isLoginForm,
+  onLogin,
+  onRegister,
+}) => {
   const { values, errors, isDisabled, handleInputChange, resetForm } =
     useValidation({});
-  // useEffect(() => {
-  //   resetForm();
-  // }, [resetForm]);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    {
+      isLoginForm
+        ? onLogin(values.email, values.password)
+        : onRegister(values.email, values.password);
+    }
+  }
 
   return (
     <div className="auth__container">
       <h1 className="auth__title">{title}</h1>
-      <form className="auth__form">
+      <form className="auth__form" onSubmit={handleSubmit}>
         <input
           id="sign-up-email"
           autoComplete="email"
@@ -59,7 +73,7 @@ const Auth = ({ title, buttonText, autocomplete, children }) => {
           }
           type="submit"
         >
-          {buttonText}
+          {isLoginForm ? "Войти" : "Регистрация"}
         </button>
         {children}
       </form>

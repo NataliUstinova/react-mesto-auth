@@ -37,16 +37,19 @@ function App() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   function tokenCheck() {
-    authApi
-      .getContent()
-      .then((res) => {
-        if (res.data._id) {
-          setEmail(res.data.email);
-          setLoggedIn(true);
-          history.push("/");
-        }
-      })
-      .catch((err) => console.log(err));
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      authApi
+        .getContent(jwt)
+        .then((res) => {
+          if (res) {
+            setEmail(res.data.email);
+            setLoggedIn(true);
+            history.push("/");
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   }
 
   useEffect(() => {
@@ -156,10 +159,15 @@ function App() {
   }
 
   function handleRegister(email, password) {
+    // setIsLoading(true);
+    console.log("регистрация");
+    console.log(email);
+    console.log(password);
     authApi
       .register(email, password)
-      .then((data) => {
-        if (data._id) {
+      .then((res) => {
+        console.log(res);
+        if (res.data._id || res.data.email) {
           setIsSuccess(true);
         }
       })
@@ -171,9 +179,11 @@ function App() {
   }
 
   function handleLogin(email, password) {
+    console.log("логин");
     authApi
       .login(email, password)
       .then((data) => {
+        console.log(data);
         if (data.message === "Authorization successful") {
           localStorage.setItem("jwt", data.token);
           setLoggedIn(true);
@@ -222,11 +232,11 @@ function App() {
           />
           <Route path="/sign-up">
             <Header link="/sign-up" linkText="Войти" />
-            <SignUp />
+            <SignUp onRegister={handleRegister} />
           </Route>
           <Route path="/sign-in">
             <Header link="/sign-in" linkText="Регистрация" />
-            <Login />
+            <Login onLogin={handleLogin} />
           </Route>
           <Route path="*">
             {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}

@@ -1,39 +1,49 @@
-const BASE_URL = "https://auth.nomoreparties.co";
-const checkServerResponse = (res) => {
+export const BASE_URL = "https://auth.nomoreparties.co";
+export const checkServerResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(res.status);
 };
 
 export const register = (email, password) => {
-  fetch(`${BASE_URL}/signup`, {
+  return fetch(`${BASE_URL}/signup`, {
     method: "POST",
-    credentials: "include",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  }).then(checkServerResponse);
+    // credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ password: password, email: email }),
+  })
+    .then(checkServerResponse)
+    .catch((err) => login(err));
 };
 
 export const login = (email, password) => {
-  fetch(`${BASE_URL}/signin`, {
+  return fetch(`${BASE_URL}/signin`, {
     method: "POST",
-    credentials: "include",
-    headers: { "Content-Type": "application/json" },
+    // credentials: "include",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   }).then(checkServerResponse);
 };
 
-export const getContent = () => {
+export const getContent = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
-    credentials: "include",
-    headers: { "Content-Type": "application/json" },
+    // credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   }).then(checkServerResponse);
 };
 
 export const logout = () => {
   return fetch(`${BASE_URL}/signout`, {
     method: "GET",
-    credentials: "include",
+    // credentials: "include",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
   }).then(checkServerResponse);
