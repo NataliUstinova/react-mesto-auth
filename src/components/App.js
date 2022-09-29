@@ -183,8 +183,8 @@ function App() {
     authApi
       .login(email, password)
       .then((data) => {
-        console.log(data);
-        if (data.message === "Authorization successful") {
+        console.log(data.token);
+        if (data.token) {
           localStorage.setItem("jwt", data.token);
           setLoggedIn(true);
           setEmail(email);
@@ -193,7 +193,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setIsSuccess(true);
+        setIsSuccess(false);
         setIsModalOpen(true);
       });
   }
@@ -231,11 +231,9 @@ function App() {
             onCardBinClick={handleCardDeleteClick}
           />
           <Route path="/sign-up">
-            <Header link="/sign-up" linkText="Войти" />
             <SignUp onRegister={handleRegister} />
           </Route>
           <Route path="/sign-in">
-            <Header link="/sign-in" linkText="Регистрация" />
             <Login onLogin={handleLogin} />
           </Route>
           <Route path="*">

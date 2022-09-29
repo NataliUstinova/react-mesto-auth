@@ -6,10 +6,8 @@ export const checkServerResponse = (res) => {
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
-    // credentials: "include",
+    credentials: "include",
     headers: {
-      "Access-Control-Allow-Origin": "http://localhost:3000",
-      "Access-Control-Allow-Credentials": true,
       Accept: "application/json",
       "Content-Type": "application/json",
     },
@@ -22,16 +20,16 @@ export const register = (email, password) => {
 export const login = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
-    // credentials: "include",
+    credentials: "include",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ password: password, email: email }),
   }).then(checkServerResponse);
 };
 
 export const getContent = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
-    // credentials: "include",
+    credentials: "include",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
