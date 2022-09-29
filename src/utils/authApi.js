@@ -41,7 +41,7 @@ export const getContent = (token) => {
 export const logout = () => {
   return fetch(`${BASE_URL}/signout`, {
     method: "GET",
-    // credentials: "include",
+    credentials: "include",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",

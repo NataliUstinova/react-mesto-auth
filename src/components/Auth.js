@@ -9,8 +9,7 @@ const Auth = ({
   onLogin,
   onRegister,
 }) => {
-  const { values, errors, isDisabled, handleInputChange, resetForm } =
-    useValidation({});
+  const { values, errors, isDisabled, handleInputChange } = useValidation({});
 
   function handleSubmit(e) {
     e.preventDefault();

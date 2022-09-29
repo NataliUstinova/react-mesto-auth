@@ -166,7 +166,7 @@ function App() {
     authApi
       .register(email, password)
       .then((res) => {
-        console.log(res);
+        console.log("res", res);
         if (res.data._id || res.data.email) {
           setIsSuccess(true);
         }
@@ -183,7 +183,7 @@ function App() {
     authApi
       .login(email, password)
       .then((data) => {
-        console.log(data.token);
+        console.log(data);
         if (data.token) {
           localStorage.setItem("jwt", data.token);
           setLoggedIn(true);
