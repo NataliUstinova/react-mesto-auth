@@ -6,7 +6,6 @@ export const checkServerResponse = (res) => {
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
-    credentials: "include",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -20,7 +19,6 @@ export const register = (email, password) => {
 export const login = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
-    credentials: "include",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
     body: JSON.stringify({ password: password, email: email }),
   }).then(checkServerResponse);
@@ -29,22 +27,10 @@ export const login = (email, password) => {
 export const getContent = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
-    credentials: "include",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
-    },
-  }).then(checkServerResponse);
-};
-
-export const logout = () => {
-  return fetch(`${BASE_URL}/signout`, {
-    method: "GET",
-    credentials: "include",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
     },
   }).then(checkServerResponse);
 };

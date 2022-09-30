@@ -11,7 +11,7 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import DeleteCardPopup from "./DeleteCardPopup";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
-import SignUp from "./SignUp";
+import Register from "./Register";
 import Login from "./Login";
 import React from "react";
 import InfoTooltip from "./InfoTooltip";
@@ -54,17 +54,14 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-    if (loggedIn) {
-      api
-        .getUserInfoServer()
-        .then((res) => setCurrentUser(res))
-        .catch((err) => console.log(err));
-
-      api
-        .getInitialCards()
-        .then((res) => setCards(res))
-        .catch((err) => console.log(err));
-    }
+    api
+      .getUserInfoServer()
+      .then((res) => setCurrentUser(res))
+      .catch((err) => console.log(err));
+    api
+      .getInitialCards()
+      .then((res) => setCards(res))
+      .catch((err) => console.log(err));
   }, []);
 
   function handleCardClick(cardData) {
@@ -159,10 +156,6 @@ function App() {
   }
 
   function handleRegister(email, password) {
-    // setIsLoading(true);
-    console.log("регистрация");
-    console.log(email);
-    console.log(password);
     authApi
       .register(email, password)
       .then((res) => {
@@ -179,7 +172,6 @@ function App() {
   }
 
   function handleLogin(email, password) {
-    console.log("логин");
     authApi
       .login(email, password)
       .then((data) => {
@@ -199,11 +191,10 @@ function App() {
   }
 
   function handleLogout() {
-    authApi.logout().then(() => {
-      setEmail("");
-      setLoggedIn(false);
-      history.push("/sign-in");
-    });
+    localStorage.clear();
+    setEmail("");
+    setLoggedIn(false);
+    history.push("/sign-in");
   }
 
   return (
@@ -231,7 +222,7 @@ function App() {
             onCardBinClick={handleCardDeleteClick}
           />
           <Route path="/sign-up">
-            <SignUp onRegister={handleRegister} />
+            <Register onRegister={handleRegister} />
           </Route>
           <Route path="/sign-in">
             <Login onLogin={handleLogin} />

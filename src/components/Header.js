@@ -7,13 +7,14 @@ export default function Header({ email, loggedIn, onLogout }) {
   return (
     <header className="header">
       <img src={logo} alt="Место" className="header__logo" />
-      {loggedIn && <p className="header__link">{email}</p>}
-      <p className="header__link">{email}</p>
-      {loggedIn && (
-        <p className="header__link" onClick={onLogout}>
-          Выйти
-        </p>
-      )}
+      <div>
+        {loggedIn && <p className="header__email">{email}</p>}
+        {loggedIn && (
+          <p className="header__link header__logout" onClick={onLogout}>
+            Выйти
+          </p>
+        )}
+      </div>
       {location.pathname === "/sign-in" && (
         <Link className="header__link" to="/sign-up">
           Регистрация

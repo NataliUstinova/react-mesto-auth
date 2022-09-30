@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Auth from "./Auth";
 
-const SignUp = ({ onRegister }) => {
+const Register = ({ onRegister }) => {
   return (
     <Auth
       onRegister={onRegister}
@@ -20,4 +20,4 @@ const SignUp = ({ onRegister }) => {
   );
 };
 
-export default SignUp;
+export default Register;
