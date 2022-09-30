@@ -7,7 +7,7 @@ export default function Header({ email, loggedIn, onLogout }) {
   return (
     <header className="header">
       <img src={logo} alt="Место" className="header__logo" />
-      <div>
+      <div className="header__container">
         {loggedIn && <p className="header__email">{email}</p>}
         {loggedIn && (
           <p className="header__link header__logout" onClick={onLogout}>

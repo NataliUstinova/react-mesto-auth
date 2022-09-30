@@ -34,7 +34,7 @@ function App() {
   const [email, setEmail] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(true);
 
   function tokenCheck() {
     const jwt = localStorage.getItem("jwt");
@@ -159,9 +159,11 @@ function App() {
     authApi
       .register(email, password)
       .then((res) => {
-        console.log("res", res);
         if (res.data._id || res.data.email) {
           setIsSuccess(true);
+          setTimeout(() => {
+            handleLogin(email, password);
+          }, 1000);
         }
       })
       .catch((err) => {
@@ -175,8 +177,8 @@ function App() {
     authApi
       .login(email, password)
       .then((data) => {
-        console.log(data);
         if (data.token) {
+          setIsModalOpen(false);
           localStorage.setItem("jwt", data.token);
           setLoggedIn(true);
           setEmail(email);
@@ -191,7 +193,7 @@ function App() {
   }
 
   function handleLogout() {
-    localStorage.clear();
+    localStorage.removeItem("jwt");
     setEmail("");
     setLoggedIn(false);
     history.push("/sign-in");
