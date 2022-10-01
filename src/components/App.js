@@ -135,8 +135,9 @@ function App() {
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
-        const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
-        setCards(newCards);
+        setCards((state) =>
+          state.map((c) => (c._id === card._id ? newCard : c))
+        );
       })
       .catch((err) => console.log(err));
   }
@@ -169,8 +170,8 @@ function App() {
       .catch((err) => {
         console.log(err);
         setIsSuccess(false);
-      });
-    setIsModalOpen(true);
+      })
+      .finally(() => setIsModalOpen(true));
   }
 
   function handleLogin(email, password) {
@@ -187,8 +188,6 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setIsSuccess(false);
-        setIsModalOpen(true);
       });
   }
 

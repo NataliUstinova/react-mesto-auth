@@ -11,9 +11,7 @@ export const register = (email, password) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ password: password, email: email }),
-  })
-    .then(checkServerResponse)
-    .catch((err) => login(err));
+  }).then(checkServerResponse);
 };
 
 export const login = (email, password) => {
