@@ -32,8 +32,8 @@ export default function Card({
       <button
         type="button"
         className={cardDeleteButtonClassName}
-        onClick={() => onCardBinClick({ card: card })}
-      ></button>
+        onClick={() => onCardBinClick({ card })}
+      />
       <img
         className="card__image"
         src={card.link}
