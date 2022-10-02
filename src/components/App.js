@@ -188,6 +188,8 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        setIsSuccess(false);
+        setIsModalOpen(true);
       });
   }
 
